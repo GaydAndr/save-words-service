@@ -1,9 +1,10 @@
-import {cleanEnv, port, str} from "envalid";
+import {cleanEnv, str, port, url} from "envalid";
 
 const validateEnv = () =>{
     cleanEnv(process.env, {
-        NODE_ENV: str(),
         PORT: port(),
+        DB_HOST: url(),
+        SECRET_KEY: str()
     })
 }
 
