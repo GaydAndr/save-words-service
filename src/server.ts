@@ -1,16 +1,20 @@
-//Importing Libraries
+import * as mongoose from "mongoose";
+import * as process from "process";
+import * as console from "console";
 require("dotenv").config();
 const app = require(".")
 
-/*
-  ===============================================================
- Importing the port set on the .env, if the port number is not set on .env or the port is being used by another server
-running on the local macchine we are asking the app to use 3000 as the port number
-  ===============================================================
-*/
+const {DB_HOST } = process.env
+
 const PORT = process.env.PORT || 3000
 
-//Listing to the app and running it on PORT 5000
 app.listen(PORT, async () => {
     console.log(`listning on port ${PORT}`)
+})
+
+mongoose.connect(DB_HOST!)
+.then(():void=>console.log('Database connection successful'))
+.catch((error)=>{
+    console.log(error.message)
+    process.exit(1)
 })
