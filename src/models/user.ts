@@ -32,7 +32,7 @@ const userSchema = new Schema<UserDocument>(
     { versionKey: false }
 )
 
-userSchema.pre('save',handleMongooseSchemaError as any)
+userSchema.post('save',handleMongooseSchemaError as any)
 // handleMongooseSchemaError
 
 // Схеми для валідації
