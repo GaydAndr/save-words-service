@@ -1,4 +1,4 @@
-import {NextFunction} from "express";
+import {NextFunction, Request, Response} from "express";
 
 type AsyncController = (req: Request, res: Response, next: NextFunction) => Promise<void>
 
@@ -8,6 +8,7 @@ const ctrlWrapper = (ctrl: AsyncController) => {
             await ctrl(req, res, next)
         } catch (error) {
             next(error)
+            // console.log(error)
         }
     }
 }

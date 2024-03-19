@@ -14,6 +14,8 @@ class RequestError extends Error {
     constructor(public status: number, message?: string) {
         super(message || messages[status] || "Unknown Error");
         this.status = status
+        console.log('RequestError')
+
     }
 }
 
